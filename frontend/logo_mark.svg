@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" role="img">
+  <title>SepticComply Logo Mark</title>
+  <desc>Minimal septic tank silhouette with checkmark shield — compliance autopilot for septic operators</desc>
+  
+  <!-- Shield background -->
+  <path d="M32 4 L58 16 V44 C58 54.5 32 60 32 60 C32 60 6 54.5 6 44 V16 L32 4 Z" 
+        fill="#1B2A4A" 
+        stroke="none"/>
+  
+  <!-- Tank body -->
+  <path d="M32 18 L42 18 L42 40 C42 45 32 48 32 48 C32 48 22 45 22 40 L22 18 Z" 
+        fill="none" 
+        stroke="#059669" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Tank access hatch -->
+  <ellipse cx="32" cy="22" rx="8" ry="4" 
+           fill="none" 
+           stroke="#059669" 
+           stroke-width="2.5" 
+           stroke-linecap="round"/>
+  
+  <!-- Hatch center detail -->
+  <circle cx="32" cy="22" r="2" fill="#059669"/>
+  
+  <!-- Checkmark (compliance verified) -->
+  <path d="M22 32 L30 40 L42 26" 
+        fill="none" 
+        stroke="#059669" 
+        stroke-width="3.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>
