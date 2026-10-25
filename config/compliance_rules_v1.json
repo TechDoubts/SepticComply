@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "verified_date": "2026-10-23",
+  "engine_version": "1.0",
+  "states": {
+    "TX": {
+      "name": "Texas",
+      "regulator": "TCEQ",
+      "pump_interval_years": {
+        "table": {
+          "750": {"1": 4.0, "2": 2.6, "3": 2.0, "4": 1.6, "5": 1.3, "6": 1.1, "7": 1.0, "8": 0.9, "9": 0.8},
+          "1000": {"1": 5.0, "2": 3.3, "3": 2.5, "4": 2.0, "5": 1.6, "6": 1.4, "7": 1.2, "8": 1.1, "9": 1.0},
+          "1250": {"1": 6.3, "2": 4.1, "3": 3.1, "4": 2.5, "5": 2.0, "6": 1.7, "7": 1.5, "8": 1.3, "9": 1.2},
+          "1500": {"1": 7.5, "2": 5.0, "3": 3.8, "4": 3.0, "5": 2.5, "6": 2.1, "7": 1.8, "8": 1.6, "9": 1.4},
+          "2000": {"1": 10.0, "2": 6.7, "3": 5.0, "4": 4.0, "5": 3.3, "6": 2.9, "7": 2.5, "8": 2.2, "9": 2.0},
+          "2500": {"1": 12.5, "2": 8.3, "3": 6.3, "4": 5.0, "5": 4.2, "6": 3.6, "7": 3.1, "8": 2.8, "9": 2.5}
+        },
+        "atu": 2.5
+      },
+      "hauler_required": true,
+      "county_override": false,
+      "penalty_usd_per_day": 25000,
+      "flags": ["hauler_validation", "5_copy_manifest", "annual_report_july_1"],
+      "compliance_notes": [
+        "5-copy manifest required per pump-out (Texas Water Code §26.121)",
+        "Annual report due July 1 to TCEQ",
+        "Record retention: 5 years minimum"
+      ]
+    },
+    "FL": {
+      "name": "Florida",
+      "regulator": "FDEP",
+      "pump_interval_years": {
+        "default": 3.0,
+        "atu": 2.5
+      },
+      "hauler_required": true,
+      "county_override": true,
+      "penalty_usd_per_day": 15000,
+      "flags": ["hauler_validation", "county_manifest", "county_variance_flag"],
+      "compliance_notes": [
+        "County-specific ordinances may impose stricter requirements",
+        "County-specific manifest required",
+        "Record retention: 5 years minimum"
+      ]
+    },
+    "CA": {
+      "name": "California",
+      "regulator": "RWQCB / County Health Departments",
+      "pump_interval_years": {
+        "default": 3.0,
+        "atu": 2.5
+      },
+      "hauler_required": true,
+      "county_override": true,
+      "real_estate_trigger": true,
+      "penalty_usd_per_day": null,
+      "flags": ["hauler_validation", "county_manifest", "county_variance_flag", "real_estate_inspection_flag"],
+      "compliance_notes": [
+        "County-specific RWQCB rules may apply",
+        "Real estate transfers often trigger inspections",
+        "County-specific manifest required",
+        "Record retention: 5 years minimum"
+      ]
+    },
+    "OH": {
+      "name": "Ohio",
+      "regulator": "ODH / Local Boards of Health",
+      "pump_interval_years": {
+        "default": 3.0,
+        "atu": 2.5
+      },
+      "hauler_required": true,
+      "local_override": true,
+      "penalty_usd_per_day": null,
+      "flags": ["hauler_validation", "local_board_manifest", "local_board_variance_flag", "hauler_checklist"],
+      "compliance_notes": [
+        "Local board of health rules may differ",
+        "Hauler duties: pump until empty, inspect baffles/tees, clean filters, prevent spillage",
+        "Local board manifest required",
+        "Record retention: 5 years minimum"
+      ]
+    },
+    "PA": {
+      "name": "Pennsylvania",
+      "regulator": "PA DEP / Municipal SMPs",
+      "pump_interval_years": {
+        "default": 3.0,
+        "atu": 2.5
+      },
+      "hauler_required": true,
+      "municipal_override": true,
+      "penalty_usd_per_day": null,
+      "flags": ["hauler_validation", "municipal_manifest", "municipal_smp_variance_flag", "mandatory_3_year"],
+      "compliance_notes": [
+        "Municipal Sewage Management Plan (SMP) may impose different intervals",
+        "Most municipalities mandate 3-year pumping (Act 537 / 25 Pa. Code §71.73)",
+        "Municipal manifest required",
+        "Record retention: 5 years minimum"
+      ]
+    }
+  },
+  "cross_state_rules": {
+    "default_interval_years": 3.0,
+    "atu": {
+      "quarterly_maintenance": true,
+      "primary_pump_years_range": [2, 3]
+    },
+    "cesspools": {
+      "in_mvp": false,
+      "flag": "cesspool_specialist_required"
+    },
+    "jurisdiction_override": {
+      "mvp_mode": "flag_only",
+      "post_mvp": "lookup_table"
+    },
+    "escalation_chain": [90, 60, 30, 7],
+    "inspector_report": true,
+    "record_retention_years": 5,
+    "hauler_validation_required": true
+  }
+}
